@@ -22,6 +22,41 @@
    </a>
 </header>
 <main class="page__main">
+  <h2 class="main__title">La url de la api</h2>
+  <p class="text">https://swapi.co/api/</p>
+  <h2 class="main__title">Autenticación</h2>
+  <p class="text">Swapi is a completely open API. No authentication is required to query and get data.</p>
+  <h2 class="main__title"> método HTTP que deben usar las peticiones a este API</h2>
+  <p class="text"> This also means that we've limited what you can do to just GET-ing the data.</p>
+  <h2 class="main__title">  URL para acceder a la info del personaje "Luke Skywalker"</h2>
+  <p class="text"> https://swapi.co/api/people/1/</p>
+  <h2 class="main__title">  URL para acceder a la info de la película "A New Hope"</h2>
+  <p class="text"> https://swapi.co/api/films/1/</p>
+  <h2 class="main__title">  a qué otros recursos puedo acceder desde el API además de personajes y pelis</h2>
+  <p class="text"> {
+      "films": "https://swapi.co/api/films/",
+      "people": "https://swapi.co/api/people/",
+      "planets": "https://swapi.co/api/planets/",
+      "species": "https://swapi.co/api/species/",
+      "starships": "https://swapi.co/api/starships/",
+      "vehicles": "https://swapi.co/api/vehicles/"
+  }</p>
+  <h2 class="main__title"> URL para acceder al listado de personajes, ¿está paginada?</h2>
+  <p class="text"> 
+    Si, esta paginada.
+
+    "count": 87, 
+    "next": "https://swapi.co/api/people/?page=2", 
+
+  </p>
+  <h2 class="main__title">   cómo puedo buscar personajes mediante la URL</h2>
+  <p class="text"> 
+      https://swapi.co/api/people/?search= + lo que quieras buscar
+  </p>
+  <h2 class="main__title">   cómo puedo hacer que el JSON de una petición se me devuelva traducido a Wookiee </h2>
+  <p class="text"> 
+      https://swapi.co/api/planets/1/?format=wookiee
+  </p>
 </main>
     <script src="js/main.js"></script>
 </body>
