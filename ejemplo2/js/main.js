@@ -1,44 +1,32 @@
 'use strict';
 
-const criaturas = document.querySelector('.criaturas');
+const btn = document.querySelector('.js__btn');
+const input = document.querySelector('.js__input');
+const list = document.querySelector('.js__list');
 
-function getCriaturas(){
-  const ENDPOINT = 'https://randomuser.me/api/?results=5';
+function search(){
+  let inputValue = input.value;
+  const ENDPOINT = `https://swapi.co/api/people/?search=${inputValue}`;
   fetch(ENDPOINT)
     .then(response => response.json())
-    .then(data =>{
-      localStorage.setItem('criaturas', JSON.stringify(data));
-      paintCriaturas(data.results);
+    .then(data => {
+      let searchResult = '';
+      for (const item of data.results){
+        searchResult += `
+        <li class="list__item"> 
+        Name: <a href="https://swapi.co/api/people/?search=${item.name}">${item.name}</a>,<br> 
+        Gender: ${item.gender} <br>
+        </li>`;
+      }
+      list.innerHTML = searchResult;
     });
 }
 
-function paintCriaturas(arr){
-  let lis = '';
-  for (const criatura of arr){
-    lis +=`
-    <li class="criatura">
-    <img 
-        src="${criatura.picture.large}" 
-        alt="${criatura.name.first} ${criatura.name.last}"
-    >
-    <h2 class="criatura__name">
-    ${criatura.name.first} ${criatura.name.last}
-    </h2> 
-    `;
+function fakeClick(event){
+  if (event.keyCode === 13){
+    search();
   }
-  criaturas.innerHTML = lis;
 }
 
-// Si hay datos guardados
-// pinta esos
-
-if(localStorage.getItem('criaturas') !== null){
-  const savedData = JSON.parse(localStorage.getItem('criaturas'));
-  paintCriaturas(savedData.results);
-}
-else{
-  // Sin no haz la petición
-  // Guarda los datos
-  getCriaturas();
-}
-
+input.addEventListener('keyup',fakeClick);
+btn.addEventListener('click', search);
